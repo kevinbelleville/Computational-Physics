@@ -1,0 +1,83 @@
+\title{Numerical Statistical Mechanics}
+\author{
+        Kevin Belleville \\
+        University of California, Los Angeles\\
+        Physics 188B, Josh Samani\\
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+
+\usepackage{braket}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We learn about the Metropolis-Hastings algorithm and apply it to an Ising model to model magnetic dipoles and their interactions with each other as we vary temperature.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection*{The Metropolis-Hastings Algorithm}
+
+The Metropolis algorithm is a Markov chain Monte Carlo simulation. In short, a Monte Carlo simulation takes repeated random sampling to numerically compute solutions; and a Markov chain is a way to compute probabilities randomly. A Markov chain is basically: if you are in a certain state, you have a certain probability of staying at that state, or changing to a different state. The Metropolis algorithm takes advantage of this by using a Markov chain to create a probability distribution. 
+
+\subsection*{The Ising Model}
+
+The Ising model is a model of magnetic dipole moments; in our case, we use a 2D array. Every point in the array is either spin up or spin down, and we use the Metropolis algorithm to compute the change in the array. There is a certain probability that the point will switch spin or stay at the same spin, depending on its neighbors to its top, bottom, left, and right sides. In our case, we use the model to show a phase transition between the states of magnetism. This model can also be extrapolated to involve a external magnetic force, but we simplify our case to have none. To elaborate on the method we use to change the model over time, we calculate the change in energy with a certain point's neighbors -- if the energy change is less than zero, we immediately accept the new state. This is because nature is always trying to find a state of equilibrium, where the energy is the lowest. (Although, one should not think of nature has "trying to find" the "best" state.) Otherwise, if the energy is greater than the current state, we accept it with a certain probability:
+
+\begin{equation}
+A = e^{-\Delta E / T}
+\end{equation}
+
+We iterate this algorithm many times until the model reaches sufficient equilibrium.
+
+\section{Assignment}
+
+\subsection*{Various Quantities vs. Temperature}
+
+
+\subsection*{Magnetization: Numerical vs. Onsager's Exact Solution}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8]{qaunts.png}
+\end{center}
+\end{figure}
+
+
+\section{Conclusions}
+
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{a} UCSC
+\\\texttt{http://physics.ucsc.edu/~peter/242/anharmonic.pdf}
+
+\bibitem{b} 
+Journal of Undergraduate Research in Physics, 
+\\\texttt{http://www.jurp.org/2012/MS134.pdf}
+
+\bibitem{d} 
+SciPy Documentation for method eigh,
+\\\texttt{https://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.eigh.html}
+
+\bibitem{e} 
+jrjohansson on GitHub, 
+\\\texttt{https://github.com/jrjohansson/wavefunction/blob/master/Wavefunction-Harmonic-Oscillator.ipynb}
+
+\bibitem{f} 
+Prof. Michael G. Moore, Michigan State University, 
+\\\texttt{http://www.pa.msu.edu/~mmoore/TIPT.pdf}
+
+
+\end{thebibliography}
+
+\end{document}
